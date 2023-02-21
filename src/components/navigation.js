@@ -2,7 +2,7 @@ import React from 'react'
 import {Container, Image, Menu} from 'semantic-ui-react'
 
 export default function Navigation (props) {
-    const tabs = ["Home", "About", "Login", "Donate"];
+    const tabs = ["Home", "About", "Login", "Donate",];
     return (
     <Menu  fixed='top' inverted>
     <Container>
@@ -11,10 +11,8 @@ export default function Navigation (props) {
           The Open Source
         </Menu.Item>
         {tabs.map((tab) => (
-        <Menu.Menu position='right'>  
-        <Menu.Item as='a' onClick={() => props.handlePageChange(tab)}
-          className={props.currentPage === tab ? "nav-link active" : "nav-link"} >
-          {tab} </Menu.Item>
+        <Menu.Menu position='float right'>  
+        <Menu.Item as='a' onClick={() => props.handlePageChange(tab)}> {tab} </Menu.Item>
         </Menu.Menu>
         ))}
 
