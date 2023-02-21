@@ -1,4 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import Navigation from './navigation';
+import About from './pages/About';
+import Donate from './pages/Donate';
+import Home from './pages/Home';
+import Login from './pages/Login';
+
 import {
   Container,
   Divider,
@@ -10,36 +16,37 @@ import {
   Segment,
 } from 'semantic-ui-react'
 
-const FixedMenuLayout = () => (
-  <div>
-    <Menu fixed='top' inverted>
-      <Container>
-        <Menu.Item as='a' header>
-          <Image size='mini' src='/logo.png' style={{ marginRight: '1.5em' }} />
-          The Open Source
-        </Menu.Item>
-        <Menu.Item as='a'>Home</Menu.Item>
+export default function FixedMenuLayout(){
 
-      </Container>
-    </Menu>
+  const [currentPage, handlePageChange] = useState("About");
+
+  const renderPage = () => {
+    switch (currentPage) {
+      case "Home":
+        return <Home />;
+      case "Donate":
+        return <Donate />;
+      case "Login":
+        return <Login />;
+      case "About":
+        return <About />;
+      default: 
+        return <Home />;
+    }
+  };  
+
+ return (
+  <div>
+    <Navigation currentPage={currentPage} handlePageChange={handlePageChange} />
+
 
     <Container text style={{ marginTop: '7em' }}>
-      <Header as='h1'>Semantic UI React Fixed Template</Header>
-      <p>This is a basic fixed menu template using fixed size containers.</p>
-      <p>
-        A text container is used for the main container, which is useful for single column layouts.
-      </p>
-
-      <Image src='/images/wireframe/media-paragraph.png' style={{ marginTop: '2em' }} />
-      <Image src='/images/wireframe/paragraph.png' style={{ marginTop: '2em' }} />
-      <Image src='/images/wireframe/paragraph.png' style={{ marginTop: '2em' }} />
-      <Image src='/images/wireframe/paragraph.png' style={{ marginTop: '2em' }} />
-      <Image src='/images/wireframe/paragraph.png' style={{ marginTop: '2em' }} />
-      <Image src='/images/wireframe/paragraph.png' style={{ marginTop: '2em' }} />
-      <Image src='/images/wireframe/paragraph.png' style={{ marginTop: '2em' }} />
+        <div className="content">
+          {renderPage(currentPage)}
+        </div>
     </Container>
 
-    <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+    <Segment inverted vertical style={{ margin: '2em 0em 0em', padding: '2em 0em', position: 'fixed', bottom: 0, width: '100%'}}>
       <Container textAlign='center'>
         <Grid divided inverted stackable>
           <Grid.Column width={3}>
@@ -78,7 +85,7 @@ const FixedMenuLayout = () => (
         </Grid>
 
         <Divider inverted section />
-        <Image centered size='mini' src='/logo.png' />
+        <Image centered size='mini' src={process.env.PUBLIC_URL + '/img/toslogo.png'}/>
         <List horizontal inverted divided link size='small'>
           <List.Item as='a' href='#'>
             Site Map
@@ -96,6 +103,5 @@ const FixedMenuLayout = () => (
       </Container>
     </Segment>
   </div>
-)
-
-export default FixedMenuLayout
+);
+}
