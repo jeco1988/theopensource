@@ -1,6 +1,7 @@
 const { Schema, model } = require("mongoose");
 const User = require("./User");
 const moment = require("moment");
+const SavedGitHubRepo = require("./SavedGitHubRepo");
 
 const CommentsSchema = new Schema({
   commentId: {
@@ -8,7 +9,8 @@ const CommentsSchema = new Schema({
     default: () => new Types.ObjectId(),
   },
   commentText: { type: String, require: true },
-  user: [User],
+  userID: [User],
+  gitHubID: [],
   createdAt: {
     type: Date,
     default: Date.now,
