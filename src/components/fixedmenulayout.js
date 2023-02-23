@@ -18,7 +18,7 @@ import {
 
 export default function FixedMenuLayout(){
 
-  const [currentPage, handlePageChange] = useState("Home");
+  const [currentPage, handlePageChange] = useState("");
 
   const renderPage = () => {
     switch (currentPage) {
