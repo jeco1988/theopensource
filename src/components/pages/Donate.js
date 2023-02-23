@@ -1,12 +1,19 @@
 import React from 'react';
 import { Container, Header } from 'semantic-ui-react';
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+
 //needing to setup STRIPE
+import PaymentForm from './PaymentForm';
+const stripePromise = loadStripe('pk_test_51Mea0KBuGoigreWFgIl5jh7JSaIJfwQlD0yRnFnxHfGM84voyZQVD1k0rLtye9tCIaHySm20YNLtFYUMwS1ZMBR200njnJuoqY');
+
 export default function Donate() {
   return (
     <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>DONATE</Header>
-      <p>DONATE  This is the about page for our application.</p>
-      <p>You can use this page to provide information about your project, your team, or any other details you want to share with your users.</p>
+        <Elements stripe={stripePromise}>
+          <PaymentForm />
+        </Elements>
     </Container>
   );
 }
