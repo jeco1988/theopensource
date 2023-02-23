@@ -8,9 +8,6 @@ import LoginForm from './loginform';
 
 import {
   Container,
-  Divider,
-  Grid,
-  Header,
   Image,
   List,
   Segment,

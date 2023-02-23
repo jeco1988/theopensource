@@ -2,10 +2,10 @@ import React from 'react'
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
 const SignUpForm = () => (
-  <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
+  <Grid textAlign='center' style={{display: 'flex', justifyContent: 'center', alignItems: 'center' }} verticalAlign='middle'>
     <Grid.Column style={{ maxWidth: 450 }}>
       <Header as='h2' color='blue' textAlign='center'>
-        <Image src='/logo.png' /> Sign up here!
+        <Image src='/img/toslogo.png' /> Sign up here!
       </Header>
       <Form size='large'>
         <Segment stacked>
@@ -16,6 +16,18 @@ const SignUpForm = () => (
             iconPosition='left'
             placeholder='Password'
             type='password'
+          />
+            <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='GitHub Username'
+          />
+            <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='First name, Last name'
           />
           <Button color='blue' fluid size='large'>
             Submit
