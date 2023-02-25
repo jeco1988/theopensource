@@ -1,0 +1,24 @@
+[
+    {
+      "name": "Brian Kernighan",
+      "email": "bkernighan@techfriends.dev",
+      "password": "password01",
+      "gitHubUsername": "jeco1988"
+      
+    },
+    {
+      "name": "Max Kanat-Alexander",
+      "email": "mkanatalexander@techfriends.dev",
+      "password": "password02",
+      "gitHubUsername": "shiham-jamaldeen"
+    },
+      
+    {
+      "name": "Why The Lucky Stiff",
+      "email": "wtls@techfriends.dev",
+      "password": "password03",
+      "gitHubUsername":"DaleDuiv"
+    }
+    
+  ]
+  

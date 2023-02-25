@@ -1,0 +1,12 @@
+[
+  { "languageName": "JavaScript", "description":"JavaScript"},
+  { "languageName": "Python","description":"Python"},
+  { "languageName": "HTML", "description":"HTML"},
+  { "languageName": "TypeScript", "description":"TypeScript" },
+  { "languageName": "C++", "description":"C++"},
+  {"languageName": "Ruby", "description":"Ruby"},
+  {"languageName": "Java", "description":"Java"},
+  {"languageName": "PHP", "description":"PHP"}
+  
+  
+]

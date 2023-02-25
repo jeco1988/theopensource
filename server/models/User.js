@@ -1,6 +1,5 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model, Types } = require("mongoose");
 const bcrypt = require("bcrypt");
-const SavedGitHubRepo = require("./SavedGitHubRepo");
 
 const userSchema = new Schema({
   userId: {
@@ -27,8 +26,9 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  githubUsername: { type: String, trim: true },
-  myFavourites: [SavedGitHubRepo],
+  gitHubUsername: { type: String, trim: true },
+
+  myFavourites: [{ type: Schema.Types.ObjectId, ref: "SavedGitHubRepo" }],
 });
 
 userSchema.pre("save", async function (next) {
