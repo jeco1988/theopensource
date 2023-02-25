@@ -10,20 +10,20 @@ const typeDefs = gql`
     myFavourites: [SavedGitHubRepo]
   }
   type SavedGitHubRepo {
+    gitHubID: ID
     owner: String
     repositoryName: String
-    gitHubID: Number
-    _id: ID
+    userComment: [userComments]
   }
-  type Language {
+  type userComments {
+    _id: ID
+    commentText: String
+    commentAuthor: String
+    createdAt: String
+  }
+  type Languages {
     languageName: String
     description: String
-  }
-  type Comments {
-    commentID: ID
-    commentText: String
-    userID: [User]
-    createdAt: String
   }
   type Auth {
     token: ID!
@@ -31,23 +31,50 @@ const typeDefs = gql`
   }
   # Define which queries the front end is allowed to make and what data is returned
   type Query {
-    user(name: String!): User
-    languages: [Languages]
+    getUser(email: String!): User
+    getLanguages: [Languages]
+    getGitHubRepo(gitHubID: ID!): SavedGitHubRepo
   }
-  type Mutation{
-    AddUser
-    Login
-    AddComment
-    AddFavourite
-    #DeleteComment
-    #DeleteFavourite
+  # Define which operations are available via the front end
+  type Mutation {
+    addUser(
+      name: String!
+      email: String!
+      password: String!
+      gitHubUsername: String
+    ): Auth
+    login(email: String!, password: String!): Auth
+    #addComment(gitHubID: ID!, commentText: String!): SavedGitHubRepo
+    #addFavourite(userID: ID!, gitHubID: String!): SavedGitHubRepo
   }
 `;
 module.exports = typeDefs;
-
+//#deleteComment
+// #deleteFavourite
 // type Query {
 //     users: [User]
 //     user(username: String!): User
 //     thoughts(username: String): [Thought]
 //     thought(thoughtId: ID!): Thought
 //     me: User
+
+// type Mutation{
+//   AddUser
+//   Login
+//   AddComment
+//   AddFavourite
+//   #DeleteComment
+//   #DeleteFavourite
+// }
+// # Define which operations are available via the front end
+// type Mutation {
+//   addUser(
+//     name: String!
+//     email: String!
+//     password: String!
+//     gitHubUsername: String
+//   ): Auth
+//   login(email: String!, password: String!): Auth
+//   addComment(gitHubID: ID!, commentText: String!): SavedGitHubRepo
+//   addFavourite(userID: ID!, gitHubID: String!): SavedGitHubRepo
+// }

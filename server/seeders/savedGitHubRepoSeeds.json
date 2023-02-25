@@ -1,0 +1,14 @@
+[{"owner": "wp-graphql", "repositoryName":"wp-graphql", "gitHubID": "72453516", "userEmail": "bkernighan@techfriends.dev",
+"userComment":[
+    {"commentText":"This is a very good first project","commentAuthor":"Brian Kernighan"},{"commentText":"Some of the best programming is done on paper, really. Putting it into the computer is just a minor detail.",
+"commentAuthor":"Max Kanat-Alexander"}]},
+ {"owner": "zulip", "repositoryName":"zulip","gitHubID": "43160685", "userEmail": "mkanatalexander@techfriends.dev"},
+ {"owner": "whitesmith","repositoryName": "rubycritic", "gitHubID": "13445293", "userEmail": "wtls@techfriends.dev", "userComment":[
+    {"commentText":"I am happy that I am contributing for the project",
+    "commentAuthor":"Why The Lucky Stiff"}]
+},
+ {"owner": "xenia-project","repositoryName": "xenia","gitHubID": "7550637","userComment":[
+    {"commentText":"How can I contribute to this project?",
+    "commentAuthor":"Max Kanat-Alexander"}
+ ] }
+]
