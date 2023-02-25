@@ -1,20 +1,23 @@
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
-const secret = "mysecretssshhhhhhh";
-const expiration = "2h";
+// set token secret and expiration date
+const secret = 'secret';
+const expiration = '1h';
 
 module.exports = {
-  authMiddleware: function ({ req }) {
-    let token = req.body.token || req.query.token || req.headers.authorization;
+  // function for our authenticated routes
+  authMiddleware: function ({ req, res }) {
+    let token = req.query.token || req.headers.authorization || req.body.token;
 
     if (req.headers.authorization) {
-      token = token.split(" ").pop().trim();
+      token = token.split(' ').pop().trim();
     }
 
     if (!token) {
       return req;
     }
 
+    // verify token
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
       req.user = data;
