@@ -71,6 +71,7 @@ const LoginForm = (props) => {
               placeholder="E-mail address"
               name="email"
               type="email"
+              onChange={handleChange}
             />
             <Form.Input
               fluid
@@ -79,14 +80,17 @@ const LoginForm = (props) => {
               placeholder="Password"
               type="password"
               name="password"
+              onChange={handleChange}
             />
             <Button color="blue" fluid size="large">
               Login
             </Button>
           </Segment>
         </Form>
+        {error && <Message negative>{error.message}</Message>}
+        {data && <Message positive>You have successfully logged in!</Message>}
         <Message>
-          New to us? <a href="#">Sign Up</a>
+          New to us? <a href="./signupform">Sign Up</a>
         </Message>
       </Grid.Column>
     </Grid>
