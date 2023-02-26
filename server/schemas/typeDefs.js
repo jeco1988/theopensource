@@ -16,7 +16,6 @@ const typeDefs = gql`
     userComment: [userComments]
   }
   type userComments {
-    _id: ID
     commentText: String
     commentAuthor: String
     createdAt: String
@@ -44,37 +43,14 @@ const typeDefs = gql`
       gitHubUsername: String
     ): Auth
     login(email: String!, password: String!): Auth
-    #addComment(gitHubID: ID!, commentText: String!): SavedGitHubRepo
-    #addFavourite(userID: ID!, gitHubID: String!): SavedGitHubRepo
+    addMyFavourite(gitHubID: String!, email: String!): User
+    #addNewComment(
+    #gitHubID: ID!
+    #commentText: String!
+    #commentAuthor: String!
+    #): SavedGitHubRepo
   }
 `;
 module.exports = typeDefs;
 //#deleteComment
 // #deleteFavourite
-// type Query {
-//     users: [User]
-//     user(username: String!): User
-//     thoughts(username: String): [Thought]
-//     thought(thoughtId: ID!): Thought
-//     me: User
-
-// type Mutation{
-//   AddUser
-//   Login
-//   AddComment
-//   AddFavourite
-//   #DeleteComment
-//   #DeleteFavourite
-// }
-// # Define which operations are available via the front end
-// type Mutation {
-//   addUser(
-//     name: String!
-//     email: String!
-//     password: String!
-//     gitHubUsername: String
-//   ): Auth
-//   login(email: String!, password: String!): Auth
-//   addComment(gitHubID: ID!, commentText: String!): SavedGitHubRepo
-//   addFavourite(userID: ID!, gitHubID: String!): SavedGitHubRepo
-// }

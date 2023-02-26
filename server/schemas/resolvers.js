@@ -38,20 +38,38 @@ const resolvers = {
 
       return { token, user };
     },
-
-    // addComment: async (parent, { commentText }) => {
-    //   const comment = await Comments.create({ commentText });
-    //   return comment;
-    // },
-    // addFavourite: async (parent, { gitHubID }, context) => {
-    //   const user = await User.findOneAndUpdate(
-    //     { _id: context.user._id },
-    //     { $pull: { myFavourites: gitHubID } },
-    //     { new: true }
-    //   );
-    //   return user;
-    // },
+    addMyFavourite: async (parent, { gitHubID, email }, context) => {
+      const { _id } = await SavedGitHubRepo.findOne({ gitHubID });
+      const user = await User.findOneAndUpdate(
+        { email: email },
+        {
+          $addToSet: {
+            myFavourites: { _id },
+          },
+        }
+      );
+      return user;
+    },
   },
+  // addNewComment: async (
+  //   parent,
+  //   { gitHubID, commmentText, commentAuthor },
+  //   context
+  // ) => {
+  //   const comment = await SavedGitHubRepo.findOneAndUpdate(
+  //     { gitHubID: gitHubID },
+  //     {
+  //       $addToSet: {
+  //         userComment: {
+  //           commmentText: commmentText,
+  //           commentAuthor: commentAuthor,
+  //         },
+  //       },
+  //     },
+  //     { new: true }
+  //   );
+  //   return { comment };
+  // },
 };
 
 module.exports = resolvers;
