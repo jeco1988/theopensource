@@ -6,9 +6,13 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     default: () => new Types.ObjectId(),
   },
-  name: {
+  fullname: {
     type: String,
     required: true,
+    trim: true,
+  },
+  username: {
+    type: String,
     unique: true,
     trim: true,
   },
@@ -26,7 +30,6 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  gitHubUsername: { type: String, trim: true },
 
   myFavourites: [{ type: Schema.Types.ObjectId, ref: "SavedGitHubRepo" }],
 });

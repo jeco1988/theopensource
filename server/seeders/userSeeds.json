@@ -1,23 +1,26 @@
 [
     {
-      "name": "Brian Kernighan",
+      "fullname": "Brian Kernighan",
+      "username": "jeco1988",
       "email": "bkernighan@techfriends.dev",
-      "password": "password01",
-      "gitHubUsername": "jeco1988"
+      "password": "password01"
+      
       
     },
     {
-      "name": "Max Kanat-Alexander",
+      "fullname": "Max Kanat-Alexander",
+      "username": "shiham-jamaldeen",
       "email": "mkanatalexander@techfriends.dev",
-      "password": "password02",
-      "gitHubUsername": "shiham-jamaldeen"
+      "password": "password02"
+      
     },
       
     {
-      "name": "Why The Lucky Stiff",
+      "fullname": "Why The Lucky Stiff",
+      "username":"DaleDuiv",
       "email": "wtls@techfriends.dev",
-      "password": "password03",
-      "gitHubUsername":"DaleDuiv"
+      "password": "password03"
+      
     }
     
   ]
