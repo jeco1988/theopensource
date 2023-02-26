@@ -3,10 +3,10 @@ const { gql } = require("apollo-server-express");
 const typeDefs = gql`
   type User {
     userID: ID
-    name: String
+    fullname: String
     email: String
     password: String
-    gitHubUsername: String
+    username: String
     myFavourites: [SavedGitHubRepo]
   }
   type SavedGitHubRepo {
@@ -37,20 +37,16 @@ const typeDefs = gql`
   # Define which operations are available via the front end
   type Mutation {
     addUser(
-      name: String!
+      fullname: String!
       email: String!
       password: String!
-      gitHubUsername: String
+      username: String
     ): Auth
     login(email: String!, password: String!): Auth
     addMyFavourite(gitHubID: String!, email: String!): User
-    #addNewComment(
-    #gitHubID: ID!
-    #commentText: String!
-    #commentAuthor: String!
-    #): SavedGitHubRepo
   }
 `;
 module.exports = typeDefs;
 //#deleteComment
 // #deleteFavourite
+// #addNewComment(gitHubID: ID!, commentText: String! commentAuthor: String!): SavedGitHubRepo
