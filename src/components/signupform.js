@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import { CREATE_USER } from './mutations';
 
@@ -38,7 +39,7 @@ const SignUpForm = () => {
             <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' value={email} onChange={(e) => setEmail(e.target.value)} />
             <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
             <Form.Input fluid icon='lock' iconPosition='left' placeholder='GitHub Username' value={username} onChange={(e) => setUsername(e.target.value)} />
-            <Form.Input fluid icon='lock' iconPosition='left' placeholder='First name, Last name' value={fullName} onChange={(e) => setFullName(e.target.value)} />
+            <Form.Input fluid icon='lock' iconPosition='left' placeholder='Full Name' value={fullName} onChange={(e) => setFullName(e.target.value)} />
             <Button color='blue' fluid size='large' loading={loading}>
               Submit
             </Button>
@@ -46,7 +47,7 @@ const SignUpForm = () => {
         </Form>
         {error && <Message negative>{error.message}</Message>}
         <Message>
-          Already a user? <a href='/loginform'>Log In</a>
+        Already a user? <Link to='/loginform'>Log In</Link>
         </Message>
       </Grid.Column>
     </Grid>

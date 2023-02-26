@@ -9,11 +9,11 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
+import { Link } from 'react-router-dom';
 import { LOGIN_USER } from "../utils/mutations.js";
-
 import Auth from "../utils/auth";
 
-const LoginForm = (props) => {
+const LoginForm = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error, data }] = useMutation(LOGIN_USER);
 
@@ -90,7 +90,7 @@ const LoginForm = (props) => {
         {error && <Message negative>{error.message}</Message>}
         {data && <Message positive>You have successfully logged in!</Message>}
         <Message>
-          New to us? <a href="./signupform">Sign Up</a>
+          New to us? <Link to='/signupform'>Sign Up</Link>
         </Message>
       </Grid.Column>
     </Grid>

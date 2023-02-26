@@ -14,11 +14,10 @@ export const LOGIN_USER = gql`
 
 export const CREATE_USER = gql`
 mutation createUser($email: String!, $password: String!, $githubUsername: String!, $firstName: String!, $lastName: String!) {
-    createUser(email: $email, password: $password, githubUsername: $githubUsername, firstName: $firstName, lastName: $lastName) {
+    createUser(email: $email, password: $password, githubUsername: $githubUsername, Name: Name) {
       id
       email
-      firstName
-      lastName
+      Name
       githubUsername
     }
   }
