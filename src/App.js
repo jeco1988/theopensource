@@ -1,10 +1,9 @@
-import logo from './logo.svg';
-import './App.css';
 import FixedMenuLayout from './components/fixedmenulayout';
+import React from 'react';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <FixedMenuLayout></FixedMenuLayout>
     </div>
   );
