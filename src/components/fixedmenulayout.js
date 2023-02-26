@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Navigation from './navigation';
 import About from './pages/About';
 import Donate from './pages/Donate';

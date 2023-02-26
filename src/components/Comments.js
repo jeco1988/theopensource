@@ -1,46 +1,58 @@
-import React from 'react';
-import { graphql } from 'react-apollo';
-import gql from 'graphql-tag';
-import { Comment } from 'semantic-ui-react';
-import Messages from './models/Comments';
+import React, { Component } from "react";
 
-const MessageContainer = ({ data: { loading, messages } }) =>
-  (loading ? null : (
-    <Messages>
-      <Comment.Group>
-        {messages.map(m => (
-          <Comment key={`${m.id}-message`}>
-            <Comment.Content>
-              <Comment.Author as="a">{m.user.username}</Comment.Author>
-              <Comment.Metadata>
-                <div>{m.created_at}</div>
-              </Comment.Metadata>
-              <Comment.Text>{m.text}</Comment.Text>
-              <Comment.Actions>
-                <Comment.Action>Reply</Comment.Action>
-              </Comment.Actions>
-            </Comment.Content>
-          </Comment>
-        ))}
-      </Comment.Group>
-    </Messages>
-  ));
+function AddComment(props) {
+  return (
+    <form onSubmit={props.handleSubmit}>
+      <input
+        type="text"
+        placeholder="Add a comment"
+        value={props.comment}
+        onChange={props.handleInputChange}
+      />
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
 
-const messagesQuery = gql`
-  query($channelId: Int!) {
-    messages(channelId: $channelId) {
-      id
-      text
-      user {
-        username
-      }
-      created_at
-    }
+class Comments extends Component {
+  state = {
+    comments: [],
+    newComment: ""
+  };
+
+  handleInputChange = (event) => {
+    this.setState({ newComment: event.target.value });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    const newComment = {
+      id: Date.now(),
+      text: this.state.newComment
+    };
+    this.setState((prevState) => ({
+      comments: [...prevState.comments, newComment],
+      newComment: ""
+    }));
+  };
+
+  render() {
+    return (
+      <div className="comments">
+        <h2>Comments</h2>
+        <ul>
+          {this.state.comments.map((comment) => (
+            <li key={comment.id}>{comment.text}</li>
+          ))}
+        </ul>
+        <AddComment
+          comment={this.state.newComment}
+          handleInputChange={this.handleInputChange}
+          handleSubmit={this.handleSubmit}
+        />
+      </div>
+    );
   }
-`;
+}
 
-export default graphql(messagesQuery, {
-  variables: props => ({
-    channelId: props.channelId,
-  }),
-})(MessageContainer);
+export default Comments;
