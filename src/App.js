@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import logo from "./logo.svg";
 import "./App.css";
 import FixedMenuLayout from "./components/fixedmenulayout";
@@ -40,6 +41,18 @@ function App() {
         <FixedMenuLayout></FixedMenuLayout>
       </div>
     </ApolloProvider>
+=======
+import FixedMenuLayout from './components/fixedmenulayout';
+import React from 'react';
+import Comments from "./components/Comments";
+
+function App() {
+  return (
+    <div className="App">
+      <FixedMenuLayout></FixedMenuLayout>
+      <Comments />
+    </div>
+>>>>>>> main
   );
 }
 
