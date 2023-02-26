@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import {
   Button,
@@ -95,37 +94,3 @@ const LoginForm = (props) => {
 };
 
 export default LoginForm;
-=======
-import React from 'react'
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
-
-const LoginForm = () => (
-  <Grid textAlign='center' style={{display: 'flex', justifyContent: 'center', alignItems: 'center' }} verticalAlign='middle'>
-    <Grid.Column style={{ maxWidth: 450 }}>
-      <Header as='h2' color='blue' textAlign='center'>
-        <Image src='/img/toslogo.png' /> Log-in to your account
-      </Header>
-      <Form size='large'>
-        <Segment stacked>
-          <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' />
-          <Form.Input
-            fluid
-            icon='lock'
-            iconPosition='left'
-            placeholder='Password'
-            type='password'
-          />
-          <Button color='blue' fluid size='large'>
-            Login
-          </Button>
-        </Segment>
-      </Form>
-      <Message>
-        New to us? <a href='/signupform'>Sign Up</a>
-      </Message>
-    </Grid.Column>
-  </Grid>
-)
-
-export default LoginForm
->>>>>>> main
