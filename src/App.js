@@ -1,6 +1,5 @@
 import FixedMenuLayout from './components/fixedmenulayout';
 import React from 'react';
-import axios from 'axios';
 
 function App() {
   return (
@@ -9,10 +8,5 @@ function App() {
     </div>
   );
 }
-
-export const getProjects = async () => {
-  const response = await axios.get('/api/projects');
-  return response.data;
-};
 
 export default App;
