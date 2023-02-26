@@ -9,9 +9,9 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
 import { LOGIN_USER } from "../utils/mutations.js";
-
-import Auth from "../utils/auth";
+import Auth from "../utils/auth.js";
 
 const LoginForm = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -63,28 +63,39 @@ const LoginForm = (props) => {
           <Image src="/img/toslogo.png" /> Log-in to your account
         </Header>
         <Form size="large" onSubmit={handleFormSubmit}>
-          <Segment stacked>
-            <Form.Input
-              fluid
-              icon="user"
-              iconPosition="left"
-              placeholder="E-mail address"
-              name="email"
-              type="email"
-            />
-            <Form.Input
-              fluid
-              icon="lock"
-              iconPosition="left"
-              placeholder="Password"
-              type="password"
-              name="password"
-            />
-            <Button color="blue" fluid size="large">
-              Login
-            </Button>
-          </Segment>
+          {data ? (
+            <p>
+              Success! You may now head{" "}
+              <Link to="/">back to the homepage.</Link>
+            </p>
+          ) : (
+            <Segment stacked>
+              <Form.Input
+                fluid
+                icon="user"
+                iconPosition="left"
+                placeholder="E-mail address"
+                name="email"
+                type="email"
+                onChange={handleChange}
+              />
+              <Form.Input
+                fluid
+                icon="lock"
+                iconPosition="left"
+                placeholder="Password"
+                type="password"
+                name="password"
+                onChange={handleChange}
+              />
+              <Button color="blue" fluid size="large">
+                Login
+              </Button>
+            </Segment>
+          )}
+          {error && <div>{error.message}</div>}
         </Form>
+
         <Message>
           New to us? <a href="#">Sign Up</a>
         </Message>
