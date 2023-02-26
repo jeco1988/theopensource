@@ -35,7 +35,7 @@ const SignUpForm = () => (
         </Segment>
       </Form>
       <Message>
-        Already a user? <a href='#'>Log In</a>
+        Already a user? <a href='/loginform'>Log In</a>
       </Message>
     </Grid.Column>
   </Grid>
