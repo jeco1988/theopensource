@@ -1,58 +1,39 @@
-import React, { Component } from "react";
+import { useEffect, useState } from 'react';
+import { getComments, createComment } from '../services/Comments';
 
-function AddComment(props) {
-  return (
-    <form onSubmit={props.handleSubmit}>
-      <input
-        type="text"
-        placeholder="Add a comment"
-        value={props.comment}
-        onChange={props.handleInputChange}
-      />
-      <button type="submit">Submit</button>
-    </form>
-  );
-}
+function Comments(props) {
+  const [comments, setComments] = useState([]);
+  const [commentText, setCommentText] = useState('');
 
-class Comments extends Component {
-  state = {
-    comments: [],
-    newComment: ""
-  };
-
-  handleInputChange = (event) => {
-    this.setState({ newComment: event.target.value });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const newComment = {
-      id: Date.now(),
-      text: this.state.newComment
+  useEffect(() => {
+    const fetchComments = async () => {
+      const commentsData = await getComments(props.match.params.postId);
+      setComments(commentsData);
     };
-    this.setState((prevState) => ({
-      comments: [...prevState.comments, newComment],
-      newComment: ""
-    }));
+    fetchComments();
+  }, [props.match.params.postId]);
+
+  const handleCommentSubmit = async (event) => {
+    event.preventDefault();
+    const newComment = await createComment(props.match.params.postId, {
+      text: commentText,
+    });
+    setComments([...comments, newComment]);
+    setCommentText('');
   };
 
-  render() {
-    return (
-      <div className="comments">
-        <h2>Comments</h2>
-        <ul>
-          {this.state.comments.map((comment) => (
-            <li key={comment.id}>{comment.text}</li>
-          ))}
-        </ul>
-        <AddComment
-          comment={this.state.newComment}
-          handleInputChange={this.handleInputChange}
-          handleSubmit={this.handleSubmit}
+  return (
+    <div>
+      <form onSubmit={handleCommentSubmit}>
+        <input
+          type="text"
+          value={commentText}
+          onChange={(event) => setCommentText(event.target.value)}
         />
-      </div>
-    );
-  }
+        <button type="submit">Add Comment</button>
+      </form>
+    </div>
+  );
 }
 
 export default Comments;
