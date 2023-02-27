@@ -10,7 +10,7 @@ export const LOGIN_USER = gql`
     }
   }
 `;
-export const ADD_USER = gql`
+export const CREATE_USER = gql`
   mutation addUser(
     $fullName: String!
     $username: String

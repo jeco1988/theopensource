@@ -30,9 +30,9 @@ const typeDefs = gql`
   }
   # Define which queries the front end is allowed to make and what data is returned
   type Query {
-    getUser(email: String!): User
-    getLanguages: [Languages]
-    getGitHubRepo(gitHubID: ID!): SavedGitHubRepo
+    User(email: String!): User
+    Languages: [Languages]
+    GitHubRepo(gitHubID: ID!): SavedGitHubRepo
   }
   # Define which operations are available via the front end
   type Mutation {
