@@ -6,20 +6,32 @@ export const LOGIN_USER = gql`
       token
       user {
         _id
-        username
       }
     }
   }
 `;
 export const CREATE_USER = gql`
-  mutation createUser($username: String!, $email: String!, $password: String!) {
-    createUser(username: $username, email: $email, password: $password) {
+  mutation addUser(
+    $fullName: String!
+    $username: String
+    $email: String!
+    $password: String!
+  ) {
+    addUser(
+      fullname: $fullname
+      username: $username
+      email: $email
+      password: $password
+    ) {
       token
       user {
         _id
-        username
-        email
       }
     }
+  }
+`;
+export const ADD_BOOKMARK = gql`
+  mutation addMyFavourite($gitHubID: String!, $email: String!) {
+    addMyFavourite(gitHubID: $gitHubID, email: $email)
   }
 `;

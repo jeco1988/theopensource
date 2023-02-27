@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { getProjects } from './services/api';
+import { useEffect, useState } from "react";
+import { getProjects } from "./services/api";
 
 function App() {
   const [projects, setProjects] = useState([]);
@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div>
-      {projects.map(project => (
+      {projects.map((project) => (
         <div key={project.id}>
           <h2>{project.name}</h2>
           <p>{project.description}</p>

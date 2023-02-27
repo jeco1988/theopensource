@@ -4,20 +4,25 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    getUser: async (parent, { email }) => {
-      return User.findOne({ email }).populate("myFavourites");
+    User: async (parent, { email }) => {
+      return User.findOne({ email });
     },
-    getLanguages: async (parent, args) => {
+    Languages: async (parent, args) => {
       return Languages.find();
     },
-    getGitHubRepo: async (parent, { gitHubID }) => {
+    GitHubRepo: async (parent, { gitHubID }) => {
       return SavedGitHubRepo.findOne({ gitHubID });
     },
   },
 
   Mutation: {
-    addUser: async (parent, { name, email, password, gitHubUsername }) => {
-      const user = await User.create({ name, email, password, gitHubUsername });
+    addUser: async (parent, { fullname, username, email, password }) => {
+      const user = await User.create({
+        fullname,
+        username,
+        email,
+        password,
+      });
       const token = signToken(user);
       return { token, user };
     },
