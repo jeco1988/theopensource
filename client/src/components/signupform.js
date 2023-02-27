@@ -3,15 +3,16 @@ import { useMutation } from '@apollo/client';
 import { Link } from 'react-router-dom';
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import { CREATE_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 const SignUpForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
-  const [fullName, setFullName] = useState('');
+  const [fullname, setFullName] = useState('');
   const [createUser, { loading, error }] = useMutation(CREATE_USER);
 
-  const handleSubmit = async (event) => {
+  const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
       const { data } = await createUser({
@@ -19,12 +20,12 @@ const SignUpForm = () => {
           email,
           password,
           username,
-          fullName,
+          fullname,
         },
       });
-      console.log(data);
+      Auth.login(data.addUser.token);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
   };
 
@@ -34,12 +35,12 @@ const SignUpForm = () => {
         <Header as='h2' color='blue' textAlign='center'>
           <Image src='/img/toslogo.png' /> Sign up here!
         </Header>
-        <Form size='large' onSubmit={handleSubmit}>
+        <Form size='large' onSubmit={handleFormSubmit}>
           <Segment stacked>
-            <Form.Input fluid icon='user' iconPosition='left' placeholder='E-mail address' value={email} onChange={(e) => setEmail(e.target.value)} />
-            <Form.Input fluid icon='lock' iconPosition='left' placeholder='Password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
-            <Form.Input fluid icon='lock' iconPosition='left' placeholder='GitHub Username' value={username} onChange={(e) => setUsername(e.target.value)} />
-            <Form.Input fluid icon='lock' iconPosition='left' placeholder='Full Name' value={fullName} onChange={(e) => setFullName(e.target.value)} />
+            <Form.Input fluid icon='user' name="email"iconPosition='left' placeholder='E-mail address' value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Form.Input fluid icon='lock' name="password"iconPosition='left' placeholder='Password' type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+            <Form.Input fluid icon='lock' name="username"iconPosition='left' placeholder='GitHub Username' value={username} onChange={(e) => setUsername(e.target.value)} />
+            <Form.Input fluid icon='lock' name="fullname"iconPosition='left' placeholder='Full Name' value={fullname} onChange={(e) => setFullName(e.target.value)} />
             <Button color='blue' fluid size='large' loading={loading}>
               Submit
             </Button>

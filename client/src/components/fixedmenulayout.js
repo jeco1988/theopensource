@@ -6,7 +6,8 @@ import About from './pages/About';
 import Donate from './pages/Donate';
 import Home from './pages/Home';
 import LoginForm from './loginform';
-import SignUpForm from './signupform';
+import SignUpForm from './signupform'; //original signupform
+// import SignUpFormv2 from './drafts/signupform'
 import {
   Container,
   Image,
