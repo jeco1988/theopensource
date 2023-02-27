@@ -35,15 +35,7 @@
       
     "concurrently": "^5.1.0"
   
-    },
-  
-    "dependencies": {
-  
-      
-    "heroku": "^7.68.2",
-  
-      
-    "node": "^19.6.1"
-  
     }
+  
+    
 }
