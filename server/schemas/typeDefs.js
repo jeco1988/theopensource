@@ -2,7 +2,7 @@ const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type User {
-    userID: ID
+    _id: ID
     fullname: String
     email: String
     password: String
@@ -10,6 +10,7 @@ const typeDefs = gql`
     myFavourites: [SavedGitHubRepo]
   }
   type SavedGitHubRepo {
+    _id: ID
     gitHubID: ID
     owner: String
     repositoryName: String
