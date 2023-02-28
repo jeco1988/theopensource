@@ -1,44 +1,49 @@
 import React, { useState } from "react";
 import { Container, Header, Card, Icon } from "semantic-ui-react";
+import { useMutation } from "@apollo/client";
 
-const data = [
-  {
-    owner: "wp-graphql",
-    language: "PHP",
-    stars: "2925",
-    stars_display: "2.92K",
-    id: "72453516",
-  },
-  {
-    owner: "zulip",
-    repositoryName: "zulip",
-    gitHubID: "43160685",
-    userEmail: "mkanatalexander@techfriends.dev",
-  },
-  {
-    owner: "whitesmith",
-    repositoryName: "rubycritic",
-    gitHubID: "13445293",
-    userEmail: "wtls@techfriends.dev",
-    userComment: [
-      {
-        commentText: "I am happy that I am contributing for the project",
-        commentAuthor: "Why The Lucky Stiff",
-      },
-    ],
-  },
-  {
-    owner: "xenia-project",
-    repositoryName: "xenia",
-    gitHubID: "7550637",
-    userComment: [
-      {
-        commentText: "How can I contribute to this project?",
-        commentAuthor: "Max Kanat-Alexander",
-      },
-    ],
-  },
-];
+import { QUERY_GITHUB_REPO } from "../../utils/mutations";
+
+import Auth from "../../utils/auth";
+
+// const data = [
+//   {
+//     owner: "wp-graphql",
+//     language: "PHP",
+//     stars: "2925",
+//     stars_display: "2.92K",
+//     id: "72453516",
+//   },
+//   {
+//     owner: "zulip",
+//     repositoryName: "zulip",
+//     gitHubID: "43160685",
+//     userEmail: "mkanatalexander@techfriends.dev",
+//   },
+//   {
+//     owner: "whitesmith",
+//     repositoryName: "rubycritic",
+//     gitHubID: "13445293",
+//     userEmail: "wtls@techfriends.dev",
+//     userComment: [
+//       {
+//         commentText: "I am happy that I am contributing for the project",
+//         commentAuthor: "Why The Lucky Stiff",
+//       },
+//     ],
+//   },
+//   {
+//     owner: "xenia-project",
+//     repositoryName: "xenia",
+//     gitHubID: "7550637",
+//     userComment: [
+//       {
+//         commentText: "How can I contribute to this project?",
+//         commentAuthor: "Max Kanat-Alexander",
+//       },
+//     ],
+//   },
+// ];
 
 export default function Home() {
   const isLoggedin = false;
