@@ -20,7 +20,11 @@ Link to deployed application: https://theopensource.herokuapp.com/
 
 ## Screenshot:
 
+<<<<<<< HEAD
 ![Project Screenshot](https://github.com/jeco1988/theopensource/blob/main/assets/img/OSScreenshot.jpg "The Open Source")
+=======
+![Project Screenshot](/assets/img/OSScreenshot.jpg "The Open Source")
+>>>>>>> main
 
 ## Technology:
 
@@ -41,7 +45,11 @@ Project is created with:
 
 ## Installation
 
+<<<<<<< HEAD
 - Once repo has been cloned locally, use `npm install`.
+=======
+- Once repo has been cloned locally, use `npm install`
+>>>>>>> main
 
 ## Usage
 
