@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navigation from './navigation';
 import About from './pages/About';
@@ -16,6 +16,10 @@ import {
 } from 'semantic-ui-react';
 
 export default function FixedMenuLayout() {
+
+
+
+
   return (
     <Router>
       

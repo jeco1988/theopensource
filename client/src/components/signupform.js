@@ -52,7 +52,7 @@ const SignUpForm = () => {
         <Header as="h2" color="blue" textAlign="center">
           <Image src="/img/toslogo.png" /> Sign up here!
         </Header>
-        <Form size="large" onSubmit={handleSubmit}>
+        <Form size="large" onSubmit={handleFormSubmit}>
           {dataFlag ? (
             <p>
               Success! You may now head{" "}

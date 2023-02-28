@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Header, Card, Icon } from "semantic-ui-react";
+import { Container, Card, Icon } from "semantic-ui-react";
 
 const data = [
   {
@@ -86,7 +86,7 @@ export default function Home() {
 }
 
 const ProjectCard = (props) => {
-  const { owner, gitHubID, repositoryName, userEmail, userComment } =
+  const { owner, gitHubID, repositoryName } =
     props.data;
   const { isFavourite, setFavourites, isLoggedin } = props;
   return (
