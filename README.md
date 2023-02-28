@@ -41,7 +41,7 @@ Project is created with:
 
 ## Installation
 
-- Once repo has been cloned locally, use `npm install`
+- Once repo has been cloned locally, use `npm install`.
 
 ## Usage
 
