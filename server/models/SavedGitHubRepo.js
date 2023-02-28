@@ -15,7 +15,24 @@ const savedGitHubRepoSchema = new Schema({
     type: String,
     required: true,
   },
-
+  description: {
+    type: String,
+    required: true,
+  },
+  language: {
+    type: String,
+    required: true,
+  },
+  url: {
+    type: String,
+    required: true,
+  },
+  issues: [
+    {
+      title: { type: String },
+      url: { type: String },
+    },
+  ],
   userComment: [
     {
       commentText: {

@@ -14,7 +14,16 @@ const typeDefs = gql`
     gitHubID: ID
     owner: String
     repositoryName: String
+    description: String
+    language: String
+    url: String
+    userEmail: String
     userComment: [userComments]
+    issues: [issues]
+  }
+  type issues {
+    title: String
+    url: String
   }
   type userComments {
     commentText: String
@@ -31,9 +40,10 @@ const typeDefs = gql`
   }
   # Define which queries the front end is allowed to make and what data is returned
   type Query {
-    User(email: String!): User
-    Languages: [Languages]
-    GitHubRepo(gitHubID: ID!): SavedGitHubRepo
+    getUser(email: String!): User
+    getLanguages: [Languages]
+    getAllGitHubRepo: [SavedGitHubRepo]
+    getSingleGitHubRepo(gitHubID: ID!): SavedGitHubRepo
   }
   # Define which operations are available via the front end
   type Mutation {
