@@ -1,12 +1,13 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navigation from './navigation';
 import About from './pages/About';
 import Donate from './pages/Donate';
 import Home from './pages/Home';
 import LoginForm from './loginform';
-import SignUpForm from './signupform';
+import SignUpForm from './signupform'; //original signupform
+// import SignUpFormv2 from './drafts/signupform'
 import {
   Container,
   Image,
@@ -15,10 +16,14 @@ import {
 } from 'semantic-ui-react';
 
 export default function FixedMenuLayout() {
+
+  const [loggedIn, setLoggedIn] = useState(false);
+
+
   return (
     <Router>
       
-        <Navigation />
+        <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
 
         <Container text style={{ marginTop: '7em' }}>
           <Routes>
