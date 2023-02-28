@@ -1,6 +1,6 @@
 {
   
-    "name": "programming-thoughts",
+    "name": "theopensource",
   
     "version": "1.0.0",
   
@@ -20,7 +20,9 @@
     "install": "cd server && npm i && cd ../client && npm i",
   
       
-    "build": "cd client && npm run build"
+    "build": "cd client && npm run build",
+
+    "heroku-postbuild": "npm run seed && cd client && npm run build"
   
     },
   
