@@ -93,7 +93,7 @@ const LoginForm = (props) => {
               </Button>
             </Segment>
           )}
-          {error && <div>{error.message}</div>}
+          {error && (<div>{error.message}</div>)}
         </Form>
 
         <Message>
