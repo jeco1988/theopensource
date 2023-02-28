@@ -17,13 +17,13 @@ import {
 
 export default function FixedMenuLayout() {
 
-
+  const [loggedIn, setLoggedIn] = useState(false);
 
 
   return (
     <Router>
       
-        <Navigation />
+        <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
 
         <Container text style={{ marginTop: '7em' }}>
           <Routes>

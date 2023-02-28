@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { Container, Card, Icon } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Container, Card, Icon, Grid } from "semantic-ui-react";
+import Auth from '../../utils/auth'
 
 const data = [
   {
@@ -41,74 +42,86 @@ const data = [
 ];
 
 export default function Home() {
-  const isLoggedin = false;
-  const [favourites, setFavourites] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      setFavorites(storedFavorites);
+    }
+  }, [isLoggedIn]);
+
+  const handleToggleFavorite = (gitHubID) => {
+    if (!isLoggedIn) {
+      // TODO: show a message or redirect to the login page
+      return;
+    }
+
+    const isFavorite = favorites.includes(gitHubID);
+    const updatedFavorites = isFavorite
+      ? favorites.filter((favorite) => favorite !== gitHubID)
+      : [...favorites, gitHubID];
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  };
+
   return (
     <>
-      {isLoggedin && (
-        <Container text style={{ marginTop: "7em" }}>
-          favourites
-          {data.map((d, i) => {
-            if (
-              favourites.find((f) => {
-                if (f === d.gitHubID) console.log("found " + d.gitHubID);
-                return f === d.gitHubID;
-              })
-            )
-              return (
-                <ProjectCard
-                  isLoggedin={isLoggedin}
-                  data={d}
-                  isFavourite={true}
-                  setFavourites={setFavourites}
-                  key={`favourites-${d.gitHubID}`}
-                />
-              );
-          })}
-        </Container>
-      )}
+      {isLoggedIn && (
+   <Grid columns={favorites.length} style={{ marginTop: "7em" }} stackable>
+   <Grid.Row>
+     <Grid.Column>
+       <h2>Favorites</h2>
+     </Grid.Column>
+   </Grid.Row>
+   <Grid.Row>
+     {data.map((d) => {
+       if (favorites.includes(d.gitHubID)) {
+         return (
+           <Grid.Column key={d.gitHubID}>
+             <ProjectCard
+               data={d}
+               isFavorite={true}
+               onToggleFavorite={handleToggleFavorite}
+             />
+           </Grid.Column>
+         );
+       }
+     })}
+   </Grid.Row>
+ </Grid>
+)}
+
       <Container text style={{ marginTop: "7em" }}>
-        projects
-        {data.map((d, i) => {
-          return (
-            <ProjectCard
-              isLoggedin={isLoggedin}
-              isFavourite={!!favourites.find((f) => f === d.gitHubID)}
-              setFavourites={setFavourites}
-              data={d}
-              key={`projects-${d.gitHubID}`}
-            />
-          );
-        })}
-      </Container>{" "}
+        <h2>Projects</h2>
+        {data.map((d) => (
+          <ProjectCard
+            key={d.gitHubID}
+            data={d}
+            isFavorite={favorites.includes(d.gitHubID)}
+            onToggleFavorite={handleToggleFavorite}
+          />
+        ))}
+      </Container>
     </>
   );
 }
 
-const ProjectCard = (props) => {
-  const { owner, gitHubID, repositoryName } =
-    props.data;
-  const { isFavourite, setFavourites, isLoggedin } = props;
+const ProjectCard = ({ data, isFavorite, onToggleFavorite }) => {
+  const { owner, gitHubID, repositoryName } = data;
+
   return (
     <Card>
       <Card.Content>
         <h1>{repositoryName}</h1>
-        {isLoggedin && (
+        {Auth.loggedIn() && (
           <Icon
             style={{ display: "flex", float: "right" }}
             size="micro"
-            name={isFavourite ? "star" : "star outline"}
-            onClick={() => {
-              setFavourites((prev) => {
-                if (isFavourite) {
-                  // If the project is already a favourite, remove it from the favourites list
-                  return prev.filter((favourite) => favourite !== gitHubID);
-                } else {
-                  // If the project is not a favourite, add it to the favourites list
-                  return [...prev, gitHubID];
-                }
-              });
-            }}
+            name={isFavorite ? "star" : "star outline"}
+            onClick={() => onToggleFavorite(gitHubID)}
           />
         )}
       </Card.Content>

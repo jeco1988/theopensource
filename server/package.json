@@ -1,11 +1,11 @@
 {
-  "name": "mern-server",
+  "name": "server",
   "version": "1.0.0",
-  "description": "A platform for beginner developers to view and contribute to open-source projects.",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "watch": "nodemon",
+    "watch": "nodemon server.js",
     "seed": "node seeders/seed.js"
   },
   "keywords": [],
@@ -18,7 +18,8 @@
     "graphql": "^16.3.0",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.4",
-    "mongoose": "^6.1.8"
+    "mongoose": "^6.1.8",
+    "stripe":"11.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.3"
