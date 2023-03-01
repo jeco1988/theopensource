@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Button,
   Form,
@@ -11,7 +11,10 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { CREATE_USER } from "../utils/mutations";
+
 let dataFlag = false;
+
+
 
 const SignUpForm = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +22,8 @@ const SignUpForm = () => {
   const [username, setUsername] = useState("");
   const [fullname, setFullName] = useState("");
   const [createUser, { loading, error }] = useMutation(CREATE_USER);
+  const navigate = useNavigate();
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -33,6 +38,7 @@ const SignUpForm = () => {
       });
       console.log(data);
       dataFlag = true;
+      navigate("/login");
     } catch (e) {
       console.error(e);
     }
