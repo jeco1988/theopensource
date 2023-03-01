@@ -8,4 +8,4 @@ const { connect, connection } = require('mongoose');
    useUnifiedTopology: true,
  });
  
- module.exports = connection
+ module.exports = connection;
