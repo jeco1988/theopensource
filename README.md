@@ -20,7 +20,7 @@ Link to deployed application: https://theopensource.herokuapp.com/
 
 ## Screenshot:
 
-![Project Screenshot](/theopensource/assets/img/OSScreenshot.jpg "The Open Source")
+![Project Screenshot](https://github.com/jeco1988/theopensource/blob/main/assets/img/OSScreenshot.jpg "The Open Source")
 
 ## Technology:
 
