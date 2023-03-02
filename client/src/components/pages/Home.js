@@ -1,49 +1,36 @@
 import React, { useState } from "react";
-import { Container, Header, Card, Icon } from "semantic-ui-react";
+import { Container, Header, Card, Icon, CardContent } from "semantic-ui-react";
 import { useMutation } from "@apollo/client";
 
 import { QUERY_GITHUB_REPO } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
 
-// const data = [
-//   {
-//     owner: "wp-graphql",
-//     language: "PHP",
-//     stars: "2925",
-//     stars_display: "2.92K",
-//     id: "72453516",
-//   },
-//   {
-//     owner: "zulip",
-//     repositoryName: "zulip",
-//     gitHubID: "43160685",
-//     userEmail: "mkanatalexander@techfriends.dev",
-//   },
-//   {
-//     owner: "whitesmith",
-//     repositoryName: "rubycritic",
-//     gitHubID: "13445293",
-//     userEmail: "wtls@techfriends.dev",
-//     userComment: [
-//       {
-//         commentText: "I am happy that I am contributing for the project",
-//         commentAuthor: "Why The Lucky Stiff",
-//       },
-//     ],
-//   },
-//   {
-//     owner: "xenia-project",
-//     repositoryName: "xenia",
-//     gitHubID: "7550637",
-//     userComment: [
-//       {
-//         commentText: "How can I contribute to this project?",
-//         commentAuthor: "Max Kanat-Alexander",
-//       },
-//     ],
-//   },
-// ];
+const data = [
+  {
+    repositoryName: "xenia",
+    gitHubID: "7550637",
+    description: "Xbox 360 Emulator Research Project ",
+    language: "C",
+    url: "https://github.com/xenia-project/xenia",
+    issues: [
+      {
+        title: "Things that should be logged",
+        url: "https://github.com/xenia-project/xenia/issues/1572",
+      },
+      {
+        title: "Custom Controls Support",
+        url: "https://github.com/xenia-project/xenia/issues/1333",
+      },
+    ],
+    userComment: [
+      {
+        commentText: "How can I contribute to this project?",
+        commentAuthor: "Max Kanat-Alexander",
+      },
+    ],
+  },
+];
 
 export default function Home() {
   const isLoggedin = false;
@@ -53,20 +40,21 @@ export default function Home() {
       {isLoggedin && (
         <Container text style={{ marginTop: "7em" }}>
           favourites
-          {data.map((d, i) => {
+          {data.map((data, index) => {
             if (
               favourites.find((f) => {
-                if (f === d.gitHubID) console.log("found " + d.gitHubID);
-                return f === d.gitHubID;
+                //
+                if (f === data.gitHubID) console.log("found " + data.gitHubID);
+                return f === data.gitHubID;
               })
             )
               return (
                 <ProjectCard
                   isLoggedin={isLoggedin}
-                  data={d}
+                  data={data}
                   isFavourite={true}
                   setFavourites={setFavourites}
-                  key={`favourites-${d.gitHubID}`}
+                  key={`favourites-${data.gitHubID}`}
                 />
               );
           })}
@@ -91,8 +79,16 @@ export default function Home() {
 }
 
 const ProjectCard = (props) => {
-  const { owner, gitHubID, repositoryName, userEmail, userComment } =
-    props.data;
+  const {
+    owner,
+    description,
+    gitHubID,
+    repositoryName,
+    url,
+    language,
+    userEmail,
+    userComment,
+  } = props.data;
   const { isFavourite, setFavourites, isLoggedin } = props;
   return (
     <Card>
@@ -118,8 +114,58 @@ const ProjectCard = (props) => {
         )}
       </Card.Content>
 
-      <Card.Content description={gitHubID} />
-      <Card.Content description={owner} />
+      <Card.Content description={description} />
+      <Card.Content description={language} />
     </Card>
   );
 };
+
+// import React from 'react'
+// import { Card } from 'semantic-ui-react'
+
+// const items = [
+//   {
+//     header: 'Project Report - April',
+//     description:
+//       'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
+//     meta: 'ROI: 30%',
+//   },
+//   {
+//     header: 'Project Report - May',
+//     description:
+//       'Bring to the table win-win survival strategies to ensure proactive domination.',
+//     meta: 'ROI: 34%',
+//   },
+//   {
+//     header: 'Project Report - June',
+//     description:
+//       'Capitalise on low hanging fruit to identify a ballpark value added activity to beta test.',
+//     meta: 'ROI: 27%',
+//   },
+// ]
+
+// const CardExampleGroupProps = () => <Card.Group items={items} />
+
+// export default CardExampleGroupProps
+///https//react.semantic-ui.com/views/card/#content-extra-content/
+// repositoryName: "xenia",
+//     gitHubID: "7550637",
+//     description: "Xbox 360 Emulator Research Project ",
+//     language: "C",
+//     url: "https://github.com/xenia-project/xenia",
+//     issues: [
+//       {
+//         title: "Things that should be logged",
+//         url: "https://github.com/xenia-project/xenia/issues/1572",
+//       },
+//       {
+//         title: "Custom Controls Support",
+//         url: "https://github.com/xenia-project/xenia/issues/1333",
+//       },
+//     ],
+//     userComment: [
+//       {
+//         commentText: "How can I contribute to this project?",
+//         commentAuthor: "Max Kanat-Alexander",
+//       },
+//     ],
