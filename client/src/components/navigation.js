@@ -5,8 +5,8 @@ import Auth from '../utils/auth'
 
 const Navigation = ({ loggedIn, setLoggedIn }) => {
   return (
-    <Menu fixed="top" inverted>
-      <Menu.Item as="a" header>
+    <Menu fixed="top" inverted className='ui stackable menu' style={{ position: 'sticky'}}>
+      <Menu.Item as={Link} to="/" header>
         <Image
           size="tiny"
           src={process.env.PUBLIC_URL + '/img/toslogo.png'}
@@ -21,17 +21,21 @@ const Navigation = ({ loggedIn, setLoggedIn }) => {
         <Menu.Item as={Link} to="/about">
           About
         </Menu.Item>
-        <Menu.Item as={Link} to="/donate">
-          Donate
-        </Menu.Item>
         {Auth.loggedIn() ? (
-          <Menu.Item as="a" onClick={() => Auth.logout()}>
-            Logout
-          </Menu.Item>
+          <>
+            <Menu.Item as="a" onClick={() => Auth.logout()}>
+              Logout
+            </Menu.Item>
+          </>
         ) : (
-          <Menu.Item as={Link} to="/login">
-            Login
-          </Menu.Item>
+          <>
+            <Menu.Item as={Link} to="/login">
+              Login
+            </Menu.Item>
+            <Menu.Item as={Link} to="/signup">
+              Signup
+            </Menu.Item>
+          </>
         )}
       </Menu.Menu>
     </Menu>
@@ -39,7 +43,3 @@ const Navigation = ({ loggedIn, setLoggedIn }) => {
 };
 
 export default Navigation;
-
-
-
-
