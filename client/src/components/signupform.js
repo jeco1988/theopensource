@@ -11,8 +11,11 @@ import {
   Segment,
 } from "semantic-ui-react";
 import { CREATE_USER } from "../utils/mutations";
+import Auth from '../utils/auth.js';
 
 let dataFlag = false;
+
+
 
 
 
@@ -38,7 +41,8 @@ const SignUpForm = () => {
       });
       console.log(data);
       dataFlag = true;
-      navigate("/login");
+      Auth.login(data.addUser.token); // log in the user with the returned token
+      navigate("/");
     } catch (e) {
       console.error(e);
     }

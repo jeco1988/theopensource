@@ -11,7 +11,7 @@ export default function Footer () {
       <Container textAlign='center'>
         <Image centered size='mini' src={process.env.PUBLIC_URL + '/img/toslogo.png'}/>
         <List horizontal inverted divided link size='small'>
-          <List.Item as='a' href='https://github.com/jeco1988/theopensource'>
+          <List.Item as='a' href='https://github.com/jeco1988/theopensource' target='blank_'>
             Our github
           </List.Item>
           <List.Item as='a' href='/Donate'>
