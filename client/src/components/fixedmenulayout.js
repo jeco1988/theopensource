@@ -26,8 +26,8 @@ export default function FixedMenuLayout() {
       
         <Navigation loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
 
-        <Container text style={{ marginTop: '7em' }}>
-          <Routes>
+        <Container style={{ marginTop: '7em'}}>
+          <Routes style={{}}>
             <Route exact path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/donate" element={<Donate />} />
@@ -36,8 +36,8 @@ export default function FixedMenuLayout() {
 
           </Routes>
         </Container>
-        <Footer />
 
-    </Router>
+        <Footer />
+    </Router> 
   );
 }
