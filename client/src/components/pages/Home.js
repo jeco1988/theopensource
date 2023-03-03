@@ -32,6 +32,7 @@ const data = [
   },
 ];
 
+
 export default function Home() {
   const isLoggedin = false;
   const [favourites, setFavourites] = useState([]);
