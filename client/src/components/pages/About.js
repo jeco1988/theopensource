@@ -7,13 +7,12 @@ const About = () => {
     <>
     <Container text style={{ marginTop: '7em' }}>
       <Header as='h1'>About</Header>
-      <Card.Group itemsPerRow={3}>
+      <Card.Group itemsPerRow={3} stackable>
         <Card>
           <Image src={process.env.PUBLIC_URL + '/img/jack.jpg'} alt="Jack" wrapped ui={false} />
           <Card.Content>
             <Card.Header>Jack Economos</Card.Header>
             <Card.Meta>
-            {/* <span className='date'>Joined in 2015</span> */}
             </Card.Meta>
             <Card.Description>
               Hi, I'm Jack, I'm an up and coming Web Developer
@@ -31,7 +30,6 @@ const About = () => {
         <Card.Content>
           <Card.Header>Shiham Jamaldeen</Card.Header>
           <Card.Meta>
-          {/* <span className='date'>Joined in 2015</span> */}
           </Card.Meta>
           <Card.Description>
             Hi, I'm Shiham, I'm an up and coming Web Developer
@@ -49,7 +47,6 @@ const About = () => {
         <Card.Content>
           <Card.Header>Dale Duivesteyn </Card.Header>
           <Card.Meta>
-          {/* <span className='date'>Joined in 2015</span> */}
           </Card.Meta>
           <Card.Description>
           Hi, I'm Dale, I'm an up and coming Web Developer

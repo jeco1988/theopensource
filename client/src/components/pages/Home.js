@@ -41,6 +41,7 @@ const data = [
   },
 ];
 
+
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
   const [favorites, setFavorites] = useState([]);

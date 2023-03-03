@@ -50,6 +50,7 @@ const SignUpForm = () => {
 
   return (
     <Grid
+    
       textAlign="center"
       style={{
         display: "flex",
