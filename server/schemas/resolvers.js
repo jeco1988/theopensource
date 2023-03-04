@@ -4,17 +4,17 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    User: async (parent, { email }) => {
-      return User.findOne({ email });
+    getUser: async (parent, { email }, context) => {
+      return await User.findOne({ email });
     },
-    Languages: async (parent, args) => {
-      return Languages.find();
+    getLanguages: async () => {
+      return await Languages.find({});
     },
-    GitHubRepo: async (parent, { gitHubID }) => {
-      return SavedGitHubRepo.findOne({ gitHubID });
+
+    getAllGitHubRepo: async () => {
+      return await SavedGitHubRepo.find({});
     },
   },
-
   Mutation: {
     addUser: async (parent, { fullname, username, email, password }) => {
       const user = await User.create({

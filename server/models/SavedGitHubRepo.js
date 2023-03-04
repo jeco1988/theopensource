@@ -6,26 +6,49 @@ const savedGitHubRepoSchema = new Schema({
   gitHubID: {
     type: String,
     required: true,
+    trim: true,
   },
   owner: {
     type: String,
     required: true,
+    trim: true,
   },
   repositoryName: {
     type: String,
     required: true,
+    trim: true,
   },
-
+  description: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  language: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  url: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  issues: [
+    {
+      title: { type: String },
+      url: { type: String, required: true, trim: true },
+    },
+  ],
   userComment: [
     {
       commentText: {
         type: String,
-        require: true,
+
         minlength: 1,
         maxlength: 280,
         trim: true,
       },
-      commentAuthor: { type: String, require: true, trim: true },
+      commentAuthor: { type: String, trim: true },
       createdAt: {
         type: Date,
         default: Date.now,

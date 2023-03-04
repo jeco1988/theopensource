@@ -1,14 +1,109 @@
-[{"owner": "wp-graphql", "repositoryName":"wp-graphql", "gitHubID": "72453516", "userEmail": "bkernighan@techfriends.dev",
+[
+    {"owner": "wp-graphql", "repositoryName":"wp-graphql", "gitHubID": "72453516", "userEmail": "bkernighan@techfriends.dev",
+"description": "🚀 GraphQL API for WordPress",
+"language": "PHP",
+"url": "https://github.com/wp-graphql/wp-graphql",
 "userComment":[
     {"commentText":"This is a very good first project","commentAuthor":"Brian Kernighan"},{"commentText":"Some of the best programming is done on paper, really. Putting it into the computer is just a minor detail.",
-"commentAuthor":"Max Kanat-Alexander"}]},
- {"owner": "zulip", "repositoryName":"zulip","gitHubID": "43160685", "userEmail": "mkanatalexander@techfriends.dev"},
- {"owner": "whitesmith","repositoryName": "rubycritic", "gitHubID": "13445293", "userEmail": "wtls@techfriends.dev", "userComment":[
+"commentAuthor":"Max Kanat-Alexander"}]
+},
+ {"owner": "zulip", "repositoryName":"zulip","gitHubID": "43160685", "userEmail": "mkanatalexander@techfriends.dev",
+ "description": "Zulip server and webapp - powerful open source team chat",
+ "language": "Python",
+ "url": "https://github.com/zulip/zulip"},
+
+ {"owner": "whitesmith","repositoryName": "rubycritic", "gitHubID": "13445293", "userEmail": "wtls@techfriends.dev", 
+ "description": "A Ruby code quality reporter",
+ "language": "ruby",
+ "url": "https://github.com/whitesmith/rubycritic",
+
+ "userComment":[
     {"commentText":"I am happy that I am contributing for the project",
     "commentAuthor":"Why The Lucky Stiff"}]
 },
- {"owner": "xenia-project","repositoryName": "xenia","gitHubID": "7550637","userComment":[
+ {"owner": "xenia-project","repositoryName": "xenia","gitHubID": "7550637",
+ "description": "Xbox 360 Emulator Research Project ",
+    "language": "C",
+        "url": "https://github.com/xenia-project/xenia",
+    "issues": [
+      {
+        "title": "Things that should be logged",
+        "url": "https://github.com/xenia-project/xenia/issues/1572"
+      },
+      {
+        "title": "Custom Controls Support",
+        "url": "https://github.com/xenia-project/xenia/issues/1333"
+      }],
+ 
+ "userComment":[
     {"commentText":"How can I contribute to this project?",
     "commentAuthor":"Max Kanat-Alexander"}
- ] }
+ ] },
+ {
+    "repositoryName": "wemake-python-styleguide",
+    "owner": "wemake-services",
+    "description": "The strictest and most opinionated python linter ever!",
+    "language": "Python",
+    "url": "https://github.com/wemake-services/wemake-python-styleguide",
+    "gitHubID": "124593057",
+    "userEmail": "wtls@techfriends.dev",
+    "issues": [
+      {
+        "title": "Forbid `await` in `for` loop",
+        "url": "https://github.com/wemake-services/wemake-python-styleguide/issues/1600"
+        
+      },
+      {
+        "title": "Introduce markdown linter to CI",
+        "url": "https://github.com/wemake-services/wemake-python-styleguide/issues/1940"
+        
+      },
+      {
+        "title": "Report useless ternary operator",
+        "url": "https://github.com/wemake-services/wemake-python-styleguide/issues/1706"
+        
+      }],
+      "userComment":[
+        {"commentText":"I am happy that I am contributing for the project",
+        "commentAuthor":"Why The Lucky Stiff"}]  
+    },
+{
+    "repositoryName": "wordpress-seo",
+    "owner": "Yoast",
+    "description": "Yoast SEO for WordPress",
+    "language": "JavaScript",
+    "slug": "javascript",
+    "url": "https://github.com/Yoast/wordpress-seo",
+    "stars": "1331",
+    "stars_display": "1.33K",
+    "gitHubID": "6723399",
+    "issues": [
+      {
+        "title": "URL watcher notification improvements",
+        "url": "https://github.com/Yoast/wordpress-seo/issues/10791"
+        
+      },
+      {
+        "title": "[Feature Request] Add option to collapse the collapsible menus in settings",
+        "url": "https://github.com/Yoast/wordpress-seo/issues/10718"
+        
+      },
+      {
+        "title": "Long labels cause overlap with dropdown boxes (Search Apprearance)",
+        "url": "https://github.com/Yoast/wordpress-seo/issues/11287"
+        
+      },
+      {
+        "title": "[optimization] Optimize Baidu webmaster tools verification",
+        "url": "https://github.com/Yoast/wordpress-seo/issues/12055"
+        
+      },
+      {
+        "title": "Add link to Post Type archive",
+        "url": "https://github.com/Yoast/wordpress-seo/issues/10150"
+        
+      }]
+    }
 ]
+
+    
