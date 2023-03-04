@@ -1,32 +1,47 @@
 import { gql } from "@apollo/client";
 
 export const QUERY_GITHUB_REPO = gql`
-  query getGitHubRepo {
-    owner
-    repositoryName
-    description
-    language
-    url
-  }
-`;
-
-export const QUERY_SINGLE_GITHUB_REPO = gql`
-  query getSingleGitHubRepo($gitHubID: ID!) {
-    getGitHubRepo {
-      owner
-      repositoryName
+  query GetAllGitHubRepo {
+    getAllGitHubRepo {
       description
-      language
-      url
-      userComment {
-        commentText
-        commentAuthor
-        createdAt
-      }
-      issue {
-        issueTitle
+      gitHubID
+      issues {
+        title
         url
       }
+      language
+      owner
+      repositoryName
+      url
+      userComment {
+        commentAuthor
+        commentText
+        createdAt
+      }
+      userEmail
     }
   }
 `;
+export const QUERY_LANG = gql`
+  query GetLanguages {
+    getLanguages {
+      description
+      languageName
+    }
+  }
+`;
+// owner
+//     repositoryName
+//     description
+//     language
+//     url
+//     userEmail
+//     userComment {
+//       commentText
+//       commentAuthor
+//       createdAt
+//     }
+//     issues {
+//       title
+//       url
+//     }

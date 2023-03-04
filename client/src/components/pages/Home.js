@@ -1,172 +1,53 @@
-import React, { useState } from "react";
-import { Container, Header, Card, Icon, CardContent } from "semantic-ui-react";
-import { useMutation } from "@apollo/client";
-
-import { QUERY_GITHUB_REPO } from "../../utils/mutations";
-
+import React, { useState, useEffect } from "react";
+import { Container, Card, Message } from "semantic-ui-react";
+import { useQuery } from "@apollo/client";
 import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
+import { QUERY_GITHUB_REPO } from "../../utils/queries";
 
-const data = [
-  {
-    repositoryName: "xenia",
-    gitHubID: "7550637",
-    description: "Xbox 360 Emulator Research Project ",
-    language: "C",
-    url: "https://github.com/xenia-project/xenia",
-    issues: [
-      {
-        title: "Things that should be logged",
-        url: "https://github.com/xenia-project/xenia/issues/1572",
-      },
-      {
-        title: "Custom Controls Support",
-        url: "https://github.com/xenia-project/xenia/issues/1333",
-      },
-    ],
-    userComment: [
-      {
-        commentText: "How can I contribute to this project?",
-        commentAuthor: "Max Kanat-Alexander",
-      },
-    ],
-  },
-];
+const Home = () => {
+  const { loading, data } = useQuery(QUERY_GITHUB_REPO);
+  const [isLoggedIn, setIsLoggedIn] = useState(Auth.loggedIn());
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-export default function Home() {
-  const isLoggedin = false;
-  const [favourites, setFavourites] = useState([]);
   return (
     <>
-      {isLoggedin && (
-        <Container text style={{ marginTop: "7em" }}>
-          favourites
-          {data.map((data, index) => {
-            if (
-              favourites.find((f) => {
-                //
-                if (f === data.gitHubID) console.log("found " + data.gitHubID);
-                return f === data.gitHubID;
-              })
-            )
-              return (
-                <ProjectCard
-                  isLoggedin={isLoggedin}
-                  data={data}
-                  isFavourite={true}
-                  setFavourites={setFavourites}
-                  key={`favourites-${data.gitHubID}`}
-                />
-              );
-          })}
-        </Container>
-      )}
-      <Container text style={{ marginTop: "7em" }}>
-        projects
-        {data.map((d, i) => {
-          return (
-            <ProjectCard
-              isLoggedin={isLoggedin}
-              isFavourite={!!favourites.find((f) => f === d.gitHubID)}
-              setFavourites={setFavourites}
-              data={d}
-              key={`projects-${d.gitHubID}`}
-            />
-          );
-        })}
-      </Container>{" "}
+      <h2>Projects</h2>
+      <Message>
+        <p>
+          Browse through the list of <i>Good First Issues</i>. You will need to
+          be logged in to access the GitHub Link. Don't have an account, the{" "}
+          <Link to="/signup">Signup</Link>
+        </p>
+      </Message>
+
+      <Container text style={{ marginTop: "50px" }}>
+        {data.getAllGitHubRepo.map((d) => (
+          <Card>
+            <Card.Content key={d._id}>
+              <h3>{d.repositoryName}</h3>
+            </Card.Content>
+            <Card.Content meta={d.language} />
+            <Card.Content description={d.description} />
+            <Card.Content>
+              {isLoggedIn ? (
+                <p>
+                  <a href={d.url} target="_blank" rel="noreferrer">
+                    Github Link
+                  </a>
+                </p>
+              ) : (
+                <p>Github Link</p>
+              )}
+            </Card.Content>
+          </Card>
+        ))}
+      </Container>
     </>
-  );
-}
-
-const ProjectCard = (props) => {
-  const {
-    owner,
-    description,
-    gitHubID,
-    repositoryName,
-    url,
-    language,
-    userEmail,
-    userComment,
-  } = props.data;
-  const { isFavourite, setFavourites, isLoggedin } = props;
-  return (
-    <Card>
-      <Card.Content>
-        <h1>{repositoryName}</h1>
-        {isLoggedin && (
-          <Icon
-            style={{ display: "flex", float: "right" }}
-            size="micro"
-            name={isFavourite ? "star" : "star outline"}
-            onClick={() => {
-              setFavourites((prev) => {
-                if (isFavourite) {
-                  // If the project is already a favourite, remove it from the favourites list
-                  return prev.filter((favourite) => favourite !== gitHubID);
-                } else {
-                  // If the project is not a favourite, add it to the favourites list
-                  return [...prev, gitHubID];
-                }
-              });
-            }}
-          />
-        )}
-      </Card.Content>
-
-      <Card.Content description={description} />
-      <Card.Content description={language} />
-    </Card>
   );
 };
 
-// import React from 'react'
-// import { Card } from 'semantic-ui-react'
-
-// const items = [
-//   {
-//     header: 'Project Report - April',
-//     description:
-//       'Leverage agile frameworks to provide a robust synopsis for high level overviews.',
-//     meta: 'ROI: 30%',
-//   },
-//   {
-//     header: 'Project Report - May',
-//     description:
-//       'Bring to the table win-win survival strategies to ensure proactive domination.',
-//     meta: 'ROI: 34%',
-//   },
-//   {
-//     header: 'Project Report - June',
-//     description:
-//       'Capitalise on low hanging fruit to identify a ballpark value added activity to beta test.',
-//     meta: 'ROI: 27%',
-//   },
-// ]
-
-// const CardExampleGroupProps = () => <Card.Group items={items} />
-
-// export default CardExampleGroupProps
-///https//react.semantic-ui.com/views/card/#content-extra-content/
-// repositoryName: "xenia",
-//     gitHubID: "7550637",
-//     description: "Xbox 360 Emulator Research Project ",
-//     language: "C",
-//     url: "https://github.com/xenia-project/xenia",
-//     issues: [
-//       {
-//         title: "Things that should be logged",
-//         url: "https://github.com/xenia-project/xenia/issues/1572",
-//       },
-//       {
-//         title: "Custom Controls Support",
-//         url: "https://github.com/xenia-project/xenia/issues/1333",
-//       },
-//     ],
-//     userComment: [
-//       {
-//         commentText: "How can I contribute to this project?",
-//         commentAuthor: "Max Kanat-Alexander",
-//       },
-//     ],
+export default Home;

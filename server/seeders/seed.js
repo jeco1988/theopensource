@@ -4,7 +4,6 @@ const { User, Languages, SavedGitHubRepo } = require("../models");
 const userSeeds = require("./userSeeds.json");
 const languageSeeds = require("./languageSeeds.json");
 const savedGitHubRepoSeeds = require("./savedGitHubRepoSeeds.json");
-
 db.once("open", async () => {
   try {
     //delete the old data

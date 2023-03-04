@@ -10,8 +10,7 @@ const typeDefs = gql`
     myFavourites: [SavedGitHubRepo]
   }
   type SavedGitHubRepo {
-    _id: ID
-    gitHubID: ID
+    gitHubID: String
     owner: String
     repositoryName: String
     description: String
@@ -43,7 +42,6 @@ const typeDefs = gql`
     getUser(email: String!): User
     getLanguages: [Languages]
     getAllGitHubRepo: [SavedGitHubRepo]
-    getSingleGitHubRepo(gitHubID: ID!): SavedGitHubRepo
   }
   # Define which operations are available via the front end
   type Mutation {
