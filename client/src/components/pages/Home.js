@@ -26,7 +26,7 @@ const Home = () => {
 
       <Container text style={{ marginTop: "50px" }}>
         {data.getAllGitHubRepo.map((d) => (
-          <Card>
+          <Card fluid color="red">
             <Card.Content key={d._id}>
               <h3>{d.repositoryName}</h3>
             </Card.Content>
